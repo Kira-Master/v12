@@ -1038,7 +1038,6 @@ break
 case 'serti1':
 case 'serti2':
 case 'serti3':
-if (!isPremier)return reply(mess.premier)
 if (isBanned)return sticBanned(from)
 if (args.length ==0) return reply(`Text Nya Mana kak? Contoh\n${prefix+command} Lexxy`)
 txtt = args.join (" ")
@@ -1048,7 +1047,6 @@ Lexxy.sendMessage(from, buff, image, { quoted: flexx, caption: 'Nih Bro Hasil ny
 break
 case 'ttvideo':
 case 'tiktok':
-if (!isPremier)return reply(mess.premier)
 if (isBanned)return sticBanned(from)
 if (args.length ==0) return reply(`Link Nya Mana kak?`)
 tk = args.join(" ")
@@ -1057,8 +1055,16 @@ sticLoad(from)
 ttv = await getBuffer(ini.result.nowm)
 Lexxy.sendMessage(from, ttv, video)
 break
+case 'facebooksd':
+if (isBanned)return sticBanned(from)
+if (args.length ==0) return reply(`Link Nya Mana kak?`)
+tk = args.join(" ")
+ini = await fetchJson(`https://api-alphabot.herokuapp.com/api/downloader/facebook?url=${tk}&apikey=Alphabot`)
+sticLoad(from)
+ttv = await getBuffer(ini.result.url)
+Lexxy.sendMessage(from, ttv, video)
+break
 case 'ttp':
-if (!isPremier)return reply(mess.premier)
 if (isBanned)return sticBanned(from)
 if (args.length ==0) return reply(`Text Nya Mana kak? Contoh\n${prefix+command} Kyura`)
 tp = args.join (" ")
@@ -1080,7 +1086,6 @@ case 'nuliskiri':
 case 'nuliskanan':
 case 'foliokiri':
 case 'foliokanan':
-if (!isPremier)return reply(mess.premier)
 if (isBanned)return sticBanned(from)
 if (args.length ==0) return reply(`Text Nya Mana kak? Contoh\n${prefix+command} Lexxy`)
 mgr = args.join (" ")
@@ -1099,7 +1104,6 @@ await Lexxy.sendMessage(from, teks, text, {quoted: mek})
 console.log(chats.length)
 break
 case 'gura':
-if (!isPremier)return reply(mess.premier)
 if (isBanned)return sticBanned(from)
 if (args.length ==0)return reply(`Textnya mana kak? Contoh\n${prefix + command} Kyura`)
 bo = args.join(" ")
@@ -1110,7 +1114,6 @@ break
 case 'kaneki':
 case 'rem':
 case 'lolimaker':
-if (!isPremier)return reply(mess.premier)
 if (isBanned)return sticBanned(from)
 if (args.length ==0)return reply(`Textnya mana kak? Contoh\n${prefix + command} Kyura`)
 bo = args.join(" ")
@@ -1120,7 +1123,6 @@ Lexxy.sendMessage(from, bf, image, { quoted: flexx, caption: 'Logo By Kira - Mas
 break
 case 'girlneko':
 case 'sadboy':
-if (!isPremier)return reply(mess.premier)
 if (isBanned)return sticBanned(from)
 if (args.length ==0)return reply(`Textnya mana kak? Contoh\n${prefix + command} Kyura OFC`)
 txt1 = args[0]
@@ -1259,7 +1261,6 @@ const te = ra[Math.floor(Math.random() * ra.length)]
 Lexxy.sendMessage(from, 'Pertanyaan : *'+rate+'*\n\nJawaban : '+ te+'%', text, { quoted: flexx })
 break
 case 'randombokep':
-if (!isPremier)return reply(mess.premier)
 if (isBanned)return sticBanned(from)
 data = fs.readFileSync('./lib/18.js');
 jsonData = JSON.parse(data);
@@ -1536,7 +1537,6 @@ fs.unlinkSync(ran)
 })
 break
 case 'searchgrup':
-if (!isPremier)return reply(mess.premier)
 if (args.length < 1) return reply(`Nama Group? Contohnya\n${prefix + command} jb`)
 hx.linkwa(q)
 sticWait(from)
@@ -1549,7 +1549,6 @@ reply(res)
 });
 break
 case 'imgsearch':
-if (!isPremier)return reply(mess.premier)
 if (args.length < 1) return reply('Tolong masukan query!')
 let im = await hx.chara(q)
 sticWait(from)
@@ -1558,7 +1557,6 @@ let li = await getBuffer(acak)
 await Lexxy.sendMessage(from,li,image,{quoted: mek})
 break
 case 'ytsearch':
-if (!isPremier)return reply(mess.premier)
 if (args.length < 1) return reply('Tolong masukan query!')
 var srch = args.join('');
 sticWait(from)
@@ -1639,7 +1637,6 @@ reply(`Kirim gambar dengan caption ${prefix}setthumb`)
 break
 case 'memeindo':
 case 'darkjokes':
-if (!isPremier)return reply(mess.premier)
 if (isBanned)return sticBanned(from)
 sticWait(from)
 zks = await fetchJson(`https://api.zeks.me/api/${command}?apikey=apivinz`)
@@ -1658,7 +1655,6 @@ case 'text3dbox':
 case 'leavest':
 case 'tlight':
 case 'nulis':
-if (!isPremier)return reply(mess.premier)
 if (isBanned)return sticBanned(from)
 if (args.length ==0)return reply('Text nya mana?')
 bp = args.join(" ")
@@ -1774,7 +1770,6 @@ fs.writeFileSync('./database/premium.json', JSON.stringify(prem))
 reply(`*@${prmm}*\n_Berhasil Delete User Premium ✓_`)
 break
 case 'mediafire':
-if (!isPremier)return reply(mess.premier)
 if (isBanned)return sticBanned(from)
 md = fs.readFileSync('./gambar/logo/mdfire.jpg')
 if (args.length < 1) return reply('Link Nya Mana? ')
@@ -1869,7 +1864,6 @@ case 'trap':
 case 'megumin':
 case 'awoo':
 case 'shinobu':
-if (!isPremier)return reply(mess.premier)
 sticWait(from)
 anu = await fetchJson(`https://waifu.pics/api/nsfw/${command}`)
 buffer = await getBuffer(anu.url)
@@ -1939,7 +1933,7 @@ reply(`Please send a picture or reply to an image with the caption ${prefix}stic
 }
 break
 case 'ytplay':
-if (!isPremier)return reply(mess.premier)
+case 'play':
 if (isBanned)return sticBanned(from)
 if (args.length ==0)return reply('Judul nya Mana Kak?')
 bo = args.join(" ")
@@ -1952,21 +1946,19 @@ but = [
 { buttonId: `${prefix}ply4 ${args.join(" ")}`, buttonText: { displayText: '𝘷𝘪𝘥𝘦𝘰' }, type: 1 },
 { buttonId: `${prefix}ply3 ${args.join(" ")}`, buttonText: { displayText: '️𝘮𝘶𝘴𝘪𝘬' }, type: 1 }
 ]
-sendButLoc(from, yt1, yt2, ytg, but)
+sendButLoc(from, yt1, yt2, ytg, but)	
 break
 case 'ply4':
 case 'playmp4':
-if (!isPremier)return reply(mess.premier)
 if (isBanned)return sticBanned(from)
 bo = args.join(" ")
 sticLoad(from)
 ini = await fetchJson(`https://api-yogipw.herokuapp.com/api/yt/playmp4?query=${bo}`)
-p4 = await getBuffer(get.url_video)
+p4 = await getBuffer(ini.url)
 Lexxy.sendMessage(from, p4, video)
 break
 case 'ply3':
 case 'playmp3':
-if (!isPremier)return reply(mess.premier)
 if (isBanned)return sticBanned(from)
 bo = args.join(" ")
 sticLoad(from)
@@ -1978,7 +1970,6 @@ case 'owner':
 sendKontak(from, `${owner}`, `${ownerName}`)
 break
 case 'ytmp4':
-if (!isPremier)return reply(mess.premier)
 if (isBanned)return sticBanned(from)
 if (args.length ==0)return reply('Link nya Mana Kak?')
 ini_link = args.join(" ")
@@ -1993,17 +1984,16 @@ sticLoad(from)
 Lexxy.sendMessage(from, res, video)
 break
 case 'ytmp3':
-if (!isPremier)return reply(mess.premier)
 if (isBanned)return sticBanned(from)
 if (args.length ==0)return reply('Link nya Mana Kak?')
 ini_link = args.join(" ")
 sticWait(from)
-ini = await fetchJson(`https://api-yogipw.herokuapp.com/api/download/ytmp3?url=${ini_link}`)
-get = ini.result
-ini_txt =`*Judul* : ${get.title}\n*Author* : ${get.channel}\n*Publis* : ${get.published}\n*Views* : ${get.views}`
+ini = await fetchJson(`https://api-alphabot.herokuapp.com/api/downloader/youtube/audio?url=${ini_link}&apikey=Alphabot`)
+get = ini.results
+ini_txt =`*Judul* : ${get.title}\n*Author* : ${get.author}\n*Publis* : ${get.uploadDate}\n*Views* : ${get.views}\n*Deskripsi* : ${get.desc}`
 yt3 = fs.readFileSync('./gambar/logo/ytdown.jpg')
 Lexxy.sendMessage(from, yt3, image, { quoted: mek, caption: ini_txt })
-res = await getBuffer(get.url)
+res = await getBuffer(get.result)
 sticLoad(from)
 Lexxy.sendMessage(from, res, audio)
 break
